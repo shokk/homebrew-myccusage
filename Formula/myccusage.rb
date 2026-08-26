@@ -16,7 +16,7 @@ class Myccusage < Formula
   version "1.0.0"
   sha256 "0000000000000000000000000000000000000000000000000000000000000"
   license "MIT"
-  head "https://github.com/shokk/homebrew-myccusage.git", branch: "main"
+  head "https://github.com/shokk/homebrew-myccusage.git", branch: "master"
 
   depends_on "node"
 
