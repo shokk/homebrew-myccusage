@@ -8,8 +8,11 @@ Homebrew tap for **MyCcusage** — a local web dashboard for [`ccusage`](https:/
 
 ```bash
 brew tap shokk/myccusage
+brew trust shokk/myccusage
 brew install myccusage
 ```
+
+`brew trust` is a one-time step Homebrew requires for any third-party tap the first time you use it (not specific to this formula) — without it, `brew install` will fail with "Refusing to load formula ... from untrusted tap."
 
 ## Requirements
 
