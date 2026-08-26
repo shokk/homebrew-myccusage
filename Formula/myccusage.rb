@@ -13,7 +13,7 @@ class Myccusage < Formula
   desc "Local web dashboard for ccusage: daily/weekly/monthly AI agent usage"
   homepage "https://github.com/shokk/homebrew-myccusage"
   url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.0.1.tar.gz"
-  version "1.0.0"
+  version "1.0.1"
   sha256 "66d739176e096f4275fd896c22234fd9a93d273b142b505f5f90ab9b04254476"
   license "MIT"
   head "https://github.com/shokk/homebrew-myccusage.git", branch: "master"
