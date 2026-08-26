@@ -12,12 +12,13 @@
 class Myccusage < Formula
   desc "Local web dashboard for ccusage: daily/weekly/monthly AI agent usage"
   homepage "https://github.com/shokk/homebrew-myccusage"
-  url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.0.0.tar.gz"
+  url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.0.1.tar.gz"
   version "1.0.0"
   sha256 "e3df531514f61f014ee1472a857f8911a701b6023b63c3a42ccbc449bb1c41cb"
   license "MIT"
   head "https://github.com/shokk/homebrew-myccusage.git", branch: "master"
 
+  depends_on "ccusage"
   depends_on "node"
 
   def install
@@ -30,12 +31,7 @@ class Myccusage < Formula
 
   def caveats
     <<~EOS
-      myccusage reads usage data via the `ccusage` CLI, which is not installed by
-      this formula. Install it separately if you haven't already:
-
-        npm install -g ccusage
-
-      Then start the dashboard with:
+      Start the dashboard with:
 
         myccusage
 

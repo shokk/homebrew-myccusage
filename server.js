@@ -144,7 +144,7 @@ function main() {
   checkCcusageAvailable((available) => {
     if (!available) {
       console.error('myccusage: the `ccusage` CLI was not found on your PATH.');
-      console.error('Install it with: npm install -g ccusage');
+      console.error('Install it with: brew install ccusage');
       process.exitCode = 1;
       return;
     }

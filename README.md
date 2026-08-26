@@ -16,11 +16,7 @@ brew install myccusage
 
 ## Requirements
 
-MyCcusage reads data through the `ccusage` CLI, which is **not** installed by this formula (it's not a Homebrew package). Install it separately:
-
-```bash
-npm install -g ccusage
-```
+MyCcusage reads data through the [`ccusage`](https://formulae.brew.sh/formula/ccusage) CLI. It's a Homebrew dependency of this formula, so `brew install myccusage` installs it automatically — no separate step needed.
 
 ## Usage
 
