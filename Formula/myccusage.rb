@@ -14,7 +14,7 @@ class Myccusage < Formula
   homepage "https://github.com/shokk/homebrew-myccusage"
   url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.0.0.tar.gz"
   version "1.0.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000"
+  sha256 "e3df531514f61f014ee1472a857f8911a701b6023b63c3a42ccbc449bb1c41cb"
   license "MIT"
   head "https://github.com/shokk/homebrew-myccusage.git", branch: "master"
 
