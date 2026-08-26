@@ -9,7 +9,7 @@ const { execFile } = require('child_process');
 const pkg = require('./package.json');
 
 function parseArgs(argv) {
-  const opts = { port: Number(process.env.PORT) || 4318, host: '127.0.0.1' };
+  const opts = { port: Number(process.env.PORT) || 4318, host: process.env.HOST || '127.0.0.1' };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--version' || arg === '-v') {

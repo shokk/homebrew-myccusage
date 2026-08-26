@@ -12,8 +12,8 @@
 class Myccusage < Formula
   desc "Local web dashboard for ccusage: daily/weekly/monthly AI agent usage"
   homepage "https://github.com/shokk/homebrew-myccusage"
-  url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.0.2.tar.gz"
-  version "1.0.2"
+  url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.1.0.tar.gz"
+  version "1.1.0"
   sha256 "efce8a7815cebe02f3e97791edaddab2622c4f587bf8bea26c322149baac00a1"
   license "MIT"
   head "https://github.com/shokk/homebrew-myccusage.git", branch: "master"
@@ -31,13 +31,36 @@ class Myccusage < Formula
 
   def caveats
     <<~EOS
-      Start the dashboard with:
+      Start the dashboard in the foreground with:
 
         myccusage
 
-      It listens on http://127.0.0.1:4318 by default (override with --port).
-      Pass --host 0.0.0.0 to make it reachable from other devices on your network.
+      Or run it as a background service (survives closing your terminal,
+      restarts if it crashes, optionally starts on login):
+
+        brew services start myccusage   # start now + on every login
+        brew services run myccusage     # start now only, no login registration
+        brew services stop myccusage    # stop it
+        brew services info myccusage    # check status
+
+      Either way it listens on http://127.0.0.1:4318 by default. In the
+      foreground, override with `myccusage --port <n> --host <addr>`. As a
+      service, `brew services` doesn't take extra flags — set PORT/HOST via an
+      env file instead:
+
+        mkdir -p ~/.homebrew/services
+        echo 'HOST=0.0.0.0' >> ~/.homebrew/services/myccusage.env
+        brew services restart myccusage
+
+      Service logs: #{var}/log/myccusage.log
     EOS
+  end
+
+  service do
+    run [opt_bin/"myccusage"]
+    keep_alive true
+    log_path var/"log/myccusage.log"
+    error_log_path var/"log/myccusage.log"
   end
 
   test do
