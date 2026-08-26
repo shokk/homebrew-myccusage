@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MyCcusage</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>MyCcusage</h1>
+    <div class="topbar-right">
+      <span id="last-updated" class="muted"></span>
+      <div class="theme-switch" role="group" aria-label="Theme">
+        <button class="theme-btn" data-theme-choice="light" title="Light">☀︎</button>
+        <button class="theme-btn" data-theme-choice="dark" title="Dark">☾</button>
+        <button class="theme-btn" data-theme-choice="system" title="System">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="filters">
+    <div class="field">
+      <label for="granularity">Granularity</label>
+      <select id="granularity">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="since">From</label>
+      <input type="date" id="since" />
+    </div>
+    <div class="field">
+      <label for="until">To</label>
+      <input type="date" id="until" />
+    </div>
+    <div class="field">
+      <label for="agent">Agent</label>
+      <select id="agent">
+        <option value="__all__">All agents</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="model">Model</label>
+      <select id="model">
+        <option value="__all__">All models</option>
+      </select>
+    </div>
+    <button id="refresh-now" class="btn">Refresh now</button>
+  </section>
+
+  <section id="error-banner" class="error-banner hidden"></section>
+
+  <section class="summary" id="summary-cards"></section>
+
+  <section class="table-wrap">
+    <table id="usage-table">
+      <thead>
+        <tr>
+          <th data-key="period" class="sortable">Period</th>
+          <th data-key="agent" class="sortable">Agent</th>
+          <th data-key="model" class="sortable">Model</th>
+          <th data-key="inputTokens" class="sortable">Input</th>
+          <th data-key="outputTokens" class="sortable">Output</th>
+          <th data-key="cacheCreationTokens" class="sortable">Cache Create</th>
+          <th data-key="cacheReadTokens" class="sortable">Cache Read</th>
+          <th data-key="totalTokens" class="sortable">Total Tokens</th>
+          <th data-key="cost" class="sortable">Cost</th>
+        </tr>
+      </thead>
+      <tbody id="usage-tbody"></tbody>
+    </table>
+    <p id="empty-state" class="muted hidden">No usage data for this filter.</p>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
