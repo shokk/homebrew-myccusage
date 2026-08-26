@@ -41,8 +41,14 @@ Options:
 Requires the \`ccusage\` CLI to be installed and on your PATH.`);
 }
 
+// Resolved to an absolute path by the Homebrew formula at install time, so
+// this keeps working under launchd/systemd (brew services), where PATH is
+// minimal and doesn't include Homebrew's own bin directory. Falls back to
+// bare "ccusage" (relying on PATH) for non-Homebrew installs.
+const CCUSAGE_BIN = process.env.CCUSAGE_BIN || 'ccusage';
+
 function checkCcusageAvailable(callback) {
-  execFile('ccusage', ['--version'], (err) => {
+  execFile(CCUSAGE_BIN, ['--version'], (err) => {
     callback(!err);
   });
 }
@@ -62,7 +68,7 @@ function runCcusage(granularity, since, until) {
     const args = [granularity, '--json', '--by-agent'];
     if (since) args.push('--since', since);
     if (until) args.push('--until', until);
-    execFile('ccusage', args, { maxBuffer: 64 * 1024 * 1024 }, (err, stdout, stderr) => {
+    execFile(CCUSAGE_BIN, args, { maxBuffer: 64 * 1024 * 1024 }, (err, stdout, stderr) => {
       if (err) {
         reject(new Error(stderr || err.message));
         return;

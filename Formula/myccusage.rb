@@ -12,8 +12,8 @@
 class Myccusage < Formula
   desc "Local web dashboard for ccusage: daily/weekly/monthly AI agent usage"
   homepage "https://github.com/shokk/homebrew-myccusage"
-  url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.1.0.tar.gz"
-  version "1.1.0"
+  url "https://github.com/shokk/homebrew-myccusage/archive/refs/tags/v1.1.1.tar.gz"
+  version "1.1.1"
   sha256 "ff37dd667d06780a91dab42c2b75a66eb3426e64f3d2d54ae4788ff172aaf1d3"
   license "MIT"
   head "https://github.com/shokk/homebrew-myccusage.git", branch: "master"
@@ -25,6 +25,10 @@ class Myccusage < Formula
     libexec.install "server.js", "public", "package.json"
     (bin/"myccusage").write <<~EOS
       #!/bin/bash
+      # Resolved to an absolute path so this keeps working under brew
+      # services (launchd/systemd), where PATH is minimal and doesn't
+      # include Homebrew's own bin directory.
+      export CCUSAGE_BIN="#{Formula["ccusage"].opt_bin}/ccusage"
       exec "#{Formula["node"].opt_bin}/node" "#{libexec}/server.js" "$@"
     EOS
   end
