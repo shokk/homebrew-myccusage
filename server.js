@@ -9,7 +9,7 @@ const { execFile } = require('child_process');
 const pkg = require('./package.json');
 
 function parseArgs(argv) {
-  const opts = { port: Number(process.env.PORT) || 4317, host: '127.0.0.1' };
+  const opts = { port: Number(process.env.PORT) || 4318, host: '127.0.0.1' };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--version' || arg === '-v') {
@@ -31,8 +31,10 @@ function printHelp() {
 Usage: myccusage [options]
 
 Options:
-  -p, --port <number>   Port to listen on (default: 4317, or $PORT)
-      --host <address>  Address to bind to (default: 127.0.0.1)
+  -p, --port <number>   Port to listen on (default: 4318, or $PORT)
+      --host <address>  Address to bind to (default: 127.0.0.1, localhost-only).
+                         Pass --host 0.0.0.0 to allow other devices on your
+                         network to reach this dashboard.
   -v, --version          Print the version and exit
   -h, --help             Print this help and exit
 

@@ -24,17 +24,21 @@ MyCcusage reads data through the [`ccusage`](https://formulae.brew.sh/formula/cc
 myccusage
 ```
 
-Starts a local server at `http://127.0.0.1:4317` (localhost only — nothing is exposed to your network) and prints the URL. Open it in a browser.
+Starts a local server at `http://127.0.0.1:4318` (localhost only by default) and prints the URL. Open it in a browser.
 
 ```
 Usage: myccusage [options]
 
 Options:
-  -p, --port <number>   Port to listen on (default: 4317, or $PORT)
-      --host <address>  Address to bind to (default: 127.0.0.1)
+  -p, --port <number>   Port to listen on (default: 4318, or $PORT)
+      --host <address>  Address to bind to (default: 127.0.0.1, localhost-only).
+                         Pass --host 0.0.0.0 to allow other devices on your
+                         network to reach this dashboard.
   -v, --version          Print the version and exit
   -h, --help             Print this help and exit
 ```
+
+By default nothing is exposed beyond this machine. If you want to check usage from another device on your network, run `myccusage --host 0.0.0.0` — be aware this makes your cost/token data reachable to anyone on that network, with no authentication.
 
 ### What the dashboard gives you
 

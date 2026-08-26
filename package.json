@@ -1,6 +1,6 @@
 {
   "name": "myccusage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Local web dashboard for ccusage: daily/weekly/monthly AI agent usage, filterable and sortable, auto-refreshing.",
   "private": true,
   "main": "server.js",
